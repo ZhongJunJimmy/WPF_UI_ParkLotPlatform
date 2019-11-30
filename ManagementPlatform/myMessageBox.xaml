@@ -1,0 +1,74 @@
+﻿<Window x:Class="ManagementPlatform.myMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ManagementPlatform"
+        mc:Ignorable="d"
+        Title="myMessageBox" Height="125" Width="320" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridBarraTitulo"  Background="#FF24409C" MouseDown="GridBarraTitulo_MouseDown">
+            <TextBlock x:Name="tbTittleName" Text="關閉系統" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="WS Simple Gallifreyan" Foreground="White" FontSize="16"/>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFCFCFCF">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="40"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock x:Name="tbContentText" Text="密碼" Margin="40 5 0 0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="WS Simple Gallifreyan" FontSize="16"/>
+                    <PasswordBox Name="tbPasswd" Width="200" Background="White" Margin="10 8 50 0"  MaxLength="12" PasswordChar="●" PasswordChanged="TbPasswd_PasswordChanged"  FontFamily="WS Simple Gallifreyan" FontSize="15" KeyDown="TbPasswd_KeyDown"/>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock x:Name="tbErrorPasswd" Visibility="Hidden" Text="密碼錯誤" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="WS Simple Gallifreyan" FontSize="15" Foreground="Red"/>
+                <TextBlock x:Name="tbEmptyPasswd" Visibility="Hidden" Text="請輸入密碼" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="WS Simple Gallifreyan" FontSize="15" Foreground="Red"/>
+            </Grid>
+            <Grid Grid.Row="21">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="btConfirm" Margin="100 0 5 0" VerticalAlignment="Top"  Background="#FF24409C" BorderBrush="#FF24409C" Click="BtConfirm_Click">
+                        <Grid Width="20">
+                            <materialDesign:PackIcon Kind="CircleOutline" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btCancel" Margin="5 0 100 0" VerticalAlignment="Top"  Background="#FF24409C" BorderBrush="#FF24409C" Click="BtCancel_Click">
+                        <Grid Width="20">
+                            <materialDesign:PackIcon Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+
+
+
+
+</Window>

@@ -1,0 +1,295 @@
+﻿<Window x:Class="ManagementPlatform.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ManagementPlatform"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="社區管理平台" Height="600" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
+            <ScrollViewer x:Name="mainPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+                <Grid Height="570">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="170"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Rectangle Margin="20 15" Fill="White" RadiusY="10" RadiusX="10" >
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="25 15">
+                            <Grid Width="35" Height="50" Background="#FFFFAF24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <materialDesign:PackIcon Kind="Car" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
+
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,30,15,10" Width="134">
+                                <TextBlock Text="場內/總數" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 70 20 10">
+                                <TextBlock Text="9999/9999" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="35"/>
+                                <TextBlock Text="輛" FontFamily="Champagne &amp; Limousines" Margin="2 5" Foreground="Gray" FontSize="20" VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.ColumnSpan="2">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle  Margin="20,15" Fill="White" RadiusY="10" RadiusX="10" >
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="25,15">
+                            <Grid Width="35" Height="50" Background="#FF41A43C" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1"/>
+                                </Grid.Effect>
+                                <materialDesign:PackIcon Kind="Tablet" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30">
+                                <TextBlock FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="30"/>
+                            </StackPanel>
+                            <Grid Margin="55 0 0 0">
+                                <ListView x:Name="lv_display" ItemsSource="{Binding displayList}" Grid.ColumnSpan="2">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn x:Name="displayID" DisplayMemberBinding="{Binding displayID}" Header="機碼" Width="60"></GridViewColumn>
+                                            <GridViewColumn x:Name="displayStatus" DisplayMemberBinding="{Binding displayStatus}" Header="狀態" Width="1150"></GridViewColumn>
+                                           </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Button Height="50" Margin="5" x:Name="newTemporaryList" Background="#425D8A" BorderBrush="#FF24409C" Click="MainPage_Click">
+                                <Grid Height="50">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="39*"/>
+                                        <RowDefinition Height="11*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,-0.4,0" Grid.RowSpan="2">
+                                        <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="0,6,0,13.6"/>
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="新增臨停車" FontSize="19" FontFamily="Champagne &amp; Limousines" Margin="4,12,4,15.6"/>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                <TextBlock Text="即時資訊" FontFamily="Champagne &amp; Limousines" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontSize="19" FontWeight="Bold"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="25 0 25 0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                <TextBlock Text="顯示資料：" FontFamily="Champagne &amp; Limousines" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" FontSize="15"/>
+                                <CheckBox x:Name="cbOwner" Content="車主"  HorizontalAlignment="Right" Margin="5 0" VerticalAlignment="Bottom" FontSize="16" Checked="CbOwner_Checked" Unchecked="CbOwner_Unchecked"/>
+                                <CheckBox x:Name="cbPhone" Content="聯絡電話" HorizontalAlignment="Right" Margin="5 0" VerticalAlignment="Bottom" FontSize="16" Checked="CbPhone_Checked" Unchecked="CbPhone_Unchecked"/>
+                                <CheckBox x:Name="cbOther" Content="備註" HorizontalAlignment="Right" Margin="5 0" VerticalAlignment="Bottom" FontSize="16" Checked="CbOther_Checked" Unchecked="CbOther_Unchecked"/>
+                            </StackPanel>
+
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Rectangle  Margin="20,15" Fill="White" RadiusY="10" RadiusX="10" >
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <Grid Margin="20,25">
+                                <ListView x:Name="lv_Log" ItemsSource="{Binding MyCars}" Grid.ColumnSpan="2">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn x:Name="carCurrentTime" DisplayMemberBinding="{Binding currentTime}" Header="時間" Width="115"></GridViewColumn>
+                                            <GridViewColumn x:Name="carOwner" DisplayMemberBinding="{Binding owner}" Header="車主" Width="0"></GridViewColumn>
+                                            <GridViewColumn x:Name="carPlate" DisplayMemberBinding="{Binding licensePlate}" Header="車牌" Width="80"></GridViewColumn>
+                                            <GridViewColumn x:Name="carDirection" DisplayMemberBinding="{Binding direction}" Header="方向" Width="60"></GridViewColumn>
+                                            <GridViewColumn x:Name="carPhone" DisplayMemberBinding="{Binding phone}" Header="聯絡電話" Width="0"></GridViewColumn>
+                                            <GridViewColumn x:Name="carOther" DisplayMemberBinding="{Binding other}" Header="備註" Width="0"></GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                <TextBlock Text="閘門控制" FontFamily="Champagne &amp; Limousines" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontSize="19" FontWeight="Bold"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="100"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Rectangle  Margin="5,15,0,15" Fill="White" RadiusY="10" RadiusX="10" >
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Grid Margin="20,25">
+                                    <ListView x:Name="lv_Gate" ItemsSource="{Binding gateList}" Grid.ColumnSpan="2">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn x:Name="gateID" DisplayMemberBinding="{Binding gateID}" Header="機碼" Width="60"></GridViewColumn>
+                                                <GridViewColumn x:Name="gateName" DisplayMemberBinding="{Binding gateName}" Header="名稱" Width="80"></GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Button Height="50" Margin="15,0" x:Name="btTurnGate" VerticalAlignment="Top" Background="#425D8A" BorderBrush="#FF24409C" Click="MainPage_Click">
+                                    <Grid Height="50">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="door" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="0,6,0,13.6"/>
+                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="開啟閘門" FontSize="19" FontFamily="Champagne &amp; Limousines" Margin="4,12,4,15.6"/>
+                                        </StackPanel>
+
+                                    </Grid>
+                                </Button>
+                            </Grid>
+
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer x:Name="newPageInfo" Visibility="Visible" RenderTransformOrigin="0.494,0.485">
+                <Grid Height="570">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer x:Name="searchPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </ScrollViewer>
+            <ScrollViewer x:Name="connectPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </ScrollViewer>
+            <ScrollViewer x:Name="aboutPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LightGray" Offset="1"/>
+                    <GradientStop Color="#FFE6E6E6"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+            </Grid.Effect>
+
+            <Grid Background="#FF5F7BD8">
+                <TextBlock Text="主頁" x:Name="pageName" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Symath" Foreground="White" FontSize="30" FontWeight="Bold"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1">
+                <Button Margin="10" x:Name="mainPage" Background="#FF24409C" BorderBrush="#FF24409C" Click="MainPage_Click">
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="ViewDashboard" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="主頁" FontFamily="Champagne &amp; Limousines"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10" x:Name="newPage" Background="#FF24409C" BorderBrush="#FF24409C" Click="NewPage_Click">
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="NewBox" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="新增" FontFamily="Champagne &amp; Limousines"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10"  x:Name="searchPage"  Background="#FF24409C" BorderBrush="#FF24409C" Click="SearchPage_Click">
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="查詢" FontFamily="Champagne &amp; Limousines"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10" x:Name="connectPage" Background="#FF24409C" BorderBrush="#FF24409C" Click="ConnectPage_Click">
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="TransitConnection" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="周邊連動" FontFamily="Champagne &amp; Limousines"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10"  x:Name="aboutPage"  Background="#FF24409C" BorderBrush="#FF24409C" Click="AboutPage_Click">
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="About" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="關於我" FontFamily="Champagne &amp; Limousines"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="GridBarraTitulo" Grid.ColumnSpan="2" Background="#FF24409C" MouseDown="GridBarraTitulo_MouseDown">
+            <TextBlock Text="社區管理平台" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="WS Simple Gallifreyan" Foreground="White" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+
+                <Button x:Name="miniMize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="MiniMize_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+                <Button x:Name="ButtonFechar" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonFechar_Click">
+                    <materialDesign:PackIcon Kind="Power"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
