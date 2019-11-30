@@ -96,31 +96,50 @@ namespace ManagementPlatform
         {
             pageName.Text = "主頁";
             mainPageInfo.Visibility = Visibility.Visible;
+            newPageInfo.Visibility = Visibility.Hidden;
+            searchPageInfo.Visibility = Visibility.Hidden;
+            connectPageInfo.Visibility = Visibility.Hidden;
+            aboutPageInfo.Visibility = Visibility.Hidden;
         }
 
         private void NewPage_Click(object sender, RoutedEventArgs e)
         {
             pageName.Text = "新增";
             mainPageInfo.Visibility = Visibility.Hidden;
+            newPageInfo.Visibility = Visibility.Visible;
+            searchPageInfo.Visibility = Visibility.Hidden;
+            connectPageInfo.Visibility = Visibility.Hidden;
+            aboutPageInfo.Visibility = Visibility.Hidden;
         }
 
         private void SearchPage_Click(object sender, RoutedEventArgs e)
         {
             pageName.Text = "查詢";
             mainPageInfo.Visibility = Visibility.Hidden;
-
+            newPageInfo.Visibility = Visibility.Hidden;
+            searchPageInfo.Visibility = Visibility.Visible;
+            connectPageInfo.Visibility = Visibility.Hidden;
+            aboutPageInfo.Visibility = Visibility.Hidden;
         }
 
         private void ConnectPage_Click(object sender, RoutedEventArgs e)
         {
             pageName.Text = "周邊連動";
             mainPageInfo.Visibility = Visibility.Hidden;
+            newPageInfo.Visibility = Visibility.Hidden;
+            searchPageInfo.Visibility = Visibility.Hidden;
+            connectPageInfo.Visibility = Visibility.Visible;
+            aboutPageInfo.Visibility = Visibility.Hidden;
         }
 
         private void AboutPage_Click(object sender, RoutedEventArgs e)
         {
             pageName.Text = "關於我";
             mainPageInfo.Visibility = Visibility.Hidden;
+            newPageInfo.Visibility = Visibility.Hidden;
+            searchPageInfo.Visibility = Visibility.Hidden;
+            connectPageInfo.Visibility = Visibility.Hidden;
+            aboutPageInfo.Visibility = Visibility.Visible;
         }
 
         private void MiniMize_Click(object sender, RoutedEventArgs e)
