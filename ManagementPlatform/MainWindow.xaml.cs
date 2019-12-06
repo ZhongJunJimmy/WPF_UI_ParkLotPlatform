@@ -22,6 +22,7 @@ namespace ManagementPlatform
     {
         public List<carInfo> MyCars { get; set; }
         public List<gateInfo> gateList { get; set; }
+        public List<displayInfo> displayList { get; set; }
         public myMessageBox myMessageBox;
 
         public MainWindow()
@@ -38,6 +39,7 @@ namespace ManagementPlatform
             car1.owner = "Jimmy Wuu";
             car1.other = "董事長";
             car1.direction = "進入";
+            car1.UID = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 
             carInfo car2 = new carInfo();
             car2.currentTime = DateTime.Now.ToString(" MM/dd HH:mm:ss");
@@ -46,6 +48,7 @@ namespace ManagementPlatform
             car2.owner = "李四";
             car2.other = "董事";
             car2.direction = "離開";
+            car2.UID = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 
             carInfo car3 = new carInfo();
             car3.currentTime = DateTime.Now.ToString(" MM/dd HH:mm:ss");
@@ -54,6 +57,7 @@ namespace ManagementPlatform
             car3.owner = "王五";
             car3.other = "董事長夫人";
             car3.direction = "離開";
+            car3.UID = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
             for (int i = 0; i < 10; i++)
             {
                 MyCars.Add(car1);
@@ -74,6 +78,14 @@ namespace ManagementPlatform
 
             gateList.Add(gate1);
             gateList.Add(gate2);
+
+            displayList = new List<displayInfo>();
+            displayInfo dInfo1 = new displayInfo();
+            dInfo1.displayID = 1;
+            dInfo1.displayStatus = true;
+
+            displayList.Add(dInfo1);
+
 
             DataContext = this;
 
@@ -177,5 +189,26 @@ namespace ManagementPlatform
             carOther.Width = 0;
         }
 
+        private void Lv_Gate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            gateInfo seletedItem=(gateInfo)e.AddedItems[0];
+            if(MessageBox.Show("是否開啟" + seletedItem.gateName, "檢查", MessageBoxButton.YesNo)==MessageBoxResult.Yes)
+            {
+                MessageBox.Show("柵欄門已開啟");
+            }
+            
+        }
+
+        private void BtCarInfo_Click(object sender, RoutedEventArgs e)
+        {
+            carInfo.Visibility = Visibility.Visible;
+            groupInfo.Visibility = Visibility.Hidden;
+        }
+
+        private void BtGroupInfo_Click(object sender, RoutedEventArgs e)
+        {
+            groupInfo.Visibility = Visibility.Visible;
+            carInfo.Visibility = Visibility.Hidden;
+        }
     }
 }

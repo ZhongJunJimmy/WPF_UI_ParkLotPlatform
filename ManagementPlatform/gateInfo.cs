@@ -2,7 +2,7 @@
 {
     public class gateInfo
     {
-        public int gateID { get; set; }
-        public string gateName { get; set; }
+        public int gateID { get; internal set; }
+        public string gateName { get; internal set; }
     }
 }

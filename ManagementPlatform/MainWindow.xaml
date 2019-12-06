@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
-            <ScrollViewer x:Name="mainPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            <Grid x:Name="mainPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
                 <Grid Height="570">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="170"/>
@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Rectangle  Margin="20,15" Fill="White" RadiusY="10" RadiusX="10" >
+                        <Rectangle  Margin="20,15" Fill="White" RadiusY="10" RadiusX="10">
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
                             </Rectangle.Effect>
@@ -80,20 +80,23 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30">
                                 <TextBlock FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="30"/>
                             </StackPanel>
-                            <Grid Margin="55 0 0 0">
-                                <ListView x:Name="lv_display" ItemsSource="{Binding displayList}" Grid.ColumnSpan="2">
+
+
+                            <Grid Margin="55,0,0,0">
+                                <ListView x:Name="lv_Gate" ItemsSource="{Binding gateList}" Grid.ColumnSpan="2" SelectionChanged="Lv_Gate_SelectionChanged">
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn x:Name="displayID" DisplayMemberBinding="{Binding displayID}" Header="機碼" Width="60"></GridViewColumn>
-                                            <GridViewColumn x:Name="displayStatus" DisplayMemberBinding="{Binding displayStatus}" Header="狀態" Width="1150"></GridViewColumn>
-                                           </GridView>
+                                            <GridViewColumn x:Name="gateID" DisplayMemberBinding="{Binding gateID}" Header="機碼" Width="60"></GridViewColumn>
+                                            <GridViewColumn x:Name="gateName" DisplayMemberBinding="{Binding gateName}" Header="名稱" Width="80"></GridViewColumn>
+                                            <GridViewColumn x:Name="gateStatus" DisplayMemberBinding="{Binding gateStatus}" Header="狀態" Width="80"></GridViewColumn>
+                                        </GridView>
                                     </ListView.View>
                                 </ListView>
                             </Grid>
                         </Grid>
 
                         <Grid Grid.Column="1">
-                            <Button Height="50" Margin="5" x:Name="newTemporaryList" Background="#425D8A" BorderBrush="#FF24409C" Click="MainPage_Click">
+                            <Button Height="50" Margin="5,5,15,5" x:Name="newTemporaryList" Background="#425D8A" BorderBrush="#FF24409C" Click="MainPage_Click">
                                 <Grid Height="50">
                                     <StackPanel Orientation="Horizontal" Margin="0,0,-0.4,0" Grid.RowSpan="2">
                                         <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="0,6,0,13.6"/>
@@ -136,13 +139,13 @@
                             </Rectangle>
 
                             <Grid Margin="20,25">
-                                <ListView x:Name="lv_Log" ItemsSource="{Binding MyCars}" Grid.ColumnSpan="2">
+                                <ListView x:Name="lv_Log" ItemsSource="{Binding MyCars}" Grid.ColumnSpan="2" >
                                     <ListView.View>
                                         <GridView>
-                                            <GridViewColumn x:Name="carCurrentTime" DisplayMemberBinding="{Binding currentTime}" Header="時間" Width="115"></GridViewColumn>
+                                            <GridViewColumn x:Name="carCurrentTime" DisplayMemberBinding="{Binding currentTime}" Header="時間" Width="auto"></GridViewColumn>
                                             <GridViewColumn x:Name="carOwner" DisplayMemberBinding="{Binding owner}" Header="車主" Width="0"></GridViewColumn>
-                                            <GridViewColumn x:Name="carPlate" DisplayMemberBinding="{Binding licensePlate}" Header="車牌" Width="80"></GridViewColumn>
-                                            <GridViewColumn x:Name="carDirection" DisplayMemberBinding="{Binding direction}" Header="方向" Width="60"></GridViewColumn>
+                                            <GridViewColumn x:Name="carPlate" DisplayMemberBinding="{Binding licensePlate}" Header="車牌" Width="auto"></GridViewColumn>
+                                            <GridViewColumn x:Name="carDirection" DisplayMemberBinding="{Binding direction}" Header="方向" Width="auto"></GridViewColumn>
                                             <GridViewColumn x:Name="carPhone" DisplayMemberBinding="{Binding phone}" Header="聯絡電話" Width="0"></GridViewColumn>
                                             <GridViewColumn x:Name="carOther" DisplayMemberBinding="{Binding other}" Header="備註" Width="0"></GridViewColumn>
                                         </GridView>
@@ -153,54 +156,40 @@
 
                         <Grid Grid.Row="0" Grid.Column="1">
                             <StackPanel Orientation="Horizontal" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                                <TextBlock Text="閘門控制" FontFamily="Champagne &amp; Limousines" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontSize="19" FontWeight="Bold"/>
+                                <TextBlock Text="字幕機狀態" FontFamily="Champagne &amp; Limousines" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontSize="19" FontWeight="Bold"/>
                             </StackPanel>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="100"/>
-                            </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0">
-                                <Rectangle  Margin="5,15,0,15" Fill="White" RadiusY="10" RadiusX="10" >
+                            <Grid>
+                                <Rectangle  Margin="5,15,15,15" Fill="White" RadiusY="10" RadiusX="10" >
                                     <Rectangle.Effect>
                                         <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
                                     </Rectangle.Effect>
                                 </Rectangle>
-                                <Grid Margin="20,25">
-                                    <ListView x:Name="lv_Gate" ItemsSource="{Binding gateList}" Grid.ColumnSpan="2">
+                                <Grid Margin="5,25,15,25">
+                                    <ListView x:Name="lv_display" ItemsSource="{Binding displayList}" Grid.ColumnSpan="2">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn x:Name="gateID" DisplayMemberBinding="{Binding gateID}" Header="機碼" Width="60"></GridViewColumn>
-                                                <GridViewColumn x:Name="gateName" DisplayMemberBinding="{Binding gateName}" Header="名稱" Width="80"></GridViewColumn>
+                                                <GridViewColumn x:Name="displayID" DisplayMemberBinding="{Binding displayID}"  Header="機碼" Width="auto"></GridViewColumn>
+                                                <GridViewColumn x:Name="displayStatus" DisplayMemberBinding="{Binding displayStatus}" Header="狀態" Width="auto"></GridViewColumn>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
                                 </Grid>
                             </Grid>
-                            <Grid Grid.Row="1">
-                                <Button Height="50" Margin="15,0" x:Name="btTurnGate" VerticalAlignment="Top" Background="#425D8A" BorderBrush="#FF24409C" Click="MainPage_Click">
-                                    <Grid Height="50">
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="door" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="0,6,0,13.6"/>
-                                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="開啟閘門" FontSize="19" FontFamily="Champagne &amp; Limousines" Margin="4,12,4,15.6"/>
-                                        </StackPanel>
 
-                                    </Grid>
-                                </Button>
-                            </Grid>
 
 
                         </Grid>
                     </Grid>
                 </Grid>
-            </ScrollViewer>
-            <ScrollViewer x:Name="newPageInfo" Visibility="Visible" RenderTransformOrigin="0.494,0.485">
+            </Grid>
+            <Grid x:Name="newPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
                 <Grid Height="570">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -208,42 +197,47 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Row="0">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,10,0,0">
-                            <Button Height="30" Margin="5" x:Name="btNewVehicle" VerticalAlignment="Top" Background="#425D8A" BorderBrush="#FF24409C">
+                    <Grid Grid.Row="0" Background="White">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
+                            <Button x:Name="btCarInfo" Height="50" Margin="5,2,5,0" VerticalAlignment="Center" Background="#FF24409C" BorderBrush="#FF24409C" Click="BtCarInfo_Click">
                                 <Grid Height="30" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal"  VerticalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="25"/>
-                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="新增車輛" FontSize="13" FontFamily="Champagne &amp; Limousines"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="19*"/>
+                                        <RowDefinition Height="11*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" Margin="0,2" Grid.RowSpan="2">
+                                        <materialDesign:PackIcon Kind="Car" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="25" Margin="0,0,5,3"/>
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="車輛資訊" FontSize="15" FontFamily="Champagne &amp; Limousines"/>
                                     </StackPanel>
                                 </Grid>
                             </Button>
-                            <Button Height="30" Margin="5" x:Name="btNewVehicleGroup" VerticalAlignment="Top" Background="#425D8A" BorderBrush="#FF24409C">
+                            <Button x:Name="btGroupInfo" Height="50" Margin="5,2,5,0" VerticalAlignment="Center" Background="#FF24409C" BorderBrush="#FF24409C" Click="BtGroupInfo_Click">
                                 <Grid Height="30" VerticalAlignment="Center">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="25"/>
-                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="新增車隊" FontSize="13" FontFamily="Champagne &amp; Limousines"/>
-                                    </StackPanel>
-                                </Grid>
-                            </Button>
-                            <Button Height="30" Margin="5" x:Name="btNewBuilding" VerticalAlignment="Top" Background="#425D8A" BorderBrush="#FF24409C">
-                                <Grid Height="30" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Plus" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="25"/>
-                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="新增棟別" FontSize="13" FontFamily="Champagne &amp; Limousines"/>
+                                        <materialDesign:PackIcon Kind="Category" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="25" Margin="0,0,5,3"/>
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="車隊資訊" FontSize="15" FontFamily="Champagne &amp; Limousines"/>
                                     </StackPanel>
                                 </Grid>
                             </Button>
                         </StackPanel>
                     </Grid>
+
+                    <Grid Grid.Row="1">
+                        <ScrollViewer x:Name="carInfo" Visibility="Visible">
+                            <TextBlock>車輛資訊</TextBlock>
+                        </ScrollViewer>
+                        <ScrollViewer x:Name="groupInfo" Visibility="Hidden">
+                            <TextBlock>車隊資訊</TextBlock>
+                        </ScrollViewer>
+                    </Grid>
                 </Grid>
-            </ScrollViewer>
-            <ScrollViewer x:Name="searchPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
-            </ScrollViewer>
-            <ScrollViewer x:Name="connectPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
-            </ScrollViewer>
-            <ScrollViewer x:Name="aboutPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
-            </ScrollViewer>
+            </Grid>
+            <Grid x:Name="searchPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </Grid>
+            <Grid x:Name="connectPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </Grid>
+            <Grid x:Name="aboutPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -276,14 +270,14 @@
                 <Button Margin="10" x:Name="newPage" Background="#FF24409C" BorderBrush="#FF24409C" Click="NewPage_Click">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="NewBox" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="新增" FontFamily="Champagne &amp; Limousines"/>
+                        <TextBlock HorizontalAlignment="Center" Text="人員管理" FontFamily="Champagne &amp; Limousines"/>
                     </Grid>
                 </Button>
 
                 <Button Margin="10"  x:Name="searchPage"  Background="#FF24409C" BorderBrush="#FF24409C" Click="SearchPage_Click">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="查詢" FontFamily="Champagne &amp; Limousines"/>
+                        <TextBlock HorizontalAlignment="Center" Text="歷史查詢" FontFamily="Champagne &amp; Limousines"/>
                     </Grid>
                 </Button>
 

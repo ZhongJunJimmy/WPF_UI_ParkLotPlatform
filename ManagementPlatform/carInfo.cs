@@ -2,11 +2,12 @@
 {
     public class carInfo
     {
-        public string other { get; set; }
-        public string licensePlate { get; set; }
-        public string owner { get; set; }
-        public string phone { get; set; }
-        public string direction { get; set; }
-        public string currentTime { get; set; }
+        public string other { get; internal set; }
+        public string licensePlate { get; internal set; }
+        public string owner { get; internal set; }
+        public string phone { get; internal set; }
+        public string direction { get; internal set; }
+        public string currentTime { get; internal set; }
+        public string UID { get; internal set; }
     }
 }
