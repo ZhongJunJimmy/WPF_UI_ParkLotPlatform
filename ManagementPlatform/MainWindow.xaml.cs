@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ManagementPlatform
 {
@@ -33,13 +24,12 @@ namespace ManagementPlatform
             if (creatdb != 0)
             {
                 if (dbBuild.createDatabase())
+                {
                     MessageBox.Show("資料庫建置已完成。");
+                    //set default passwd
+                    dbProcess.ExecuteSQL("insert into parking_lot_platform_db.config(config_para_name,config_para_data)value('passwd','uo+imUr0Gw7NFF62OagnvQ==')");
+                }
             }
-            
-
-
-
-            mainPageInfo.Visibility = Visibility.Visible;
 
             MyCars = new List<carInfo>();
 
@@ -221,5 +211,11 @@ namespace ManagementPlatform
             groupInfo.Visibility = Visibility.Visible;
             carInfo.Visibility = Visibility.Hidden;
         }
+
+
+
+
+
+        
     }
 }

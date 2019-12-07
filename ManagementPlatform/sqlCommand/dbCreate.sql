@@ -4,7 +4,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `parking_lot_platform_db`.`config` (
   `config_sno` int(11) NOT NULL,
   `config_para_name` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `config_para_data` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL
+  `config_para_data` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `parking_lot_platform_db`.`control_box_info` (
@@ -15,8 +15,6 @@ CREATE TABLE `parking_lot_platform_db`.`control_box_info` (
   `control_box_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
-
 CREATE TABLE `parking_lot_platform_db`.`display_info` (
   `display_info_name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `display_info_ip` char(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -25,16 +23,12 @@ CREATE TABLE `parking_lot_platform_db`.`display_info` (
   `display_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
-
 CREATE TABLE `parking_lot_platform_db`.`gate_info` (
   `gate_info_name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `control_box_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL,
   `gate_info_no` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `gate_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
 
 CREATE TABLE `parking_lot_platform_db`.`group_info` (
   `group_info_name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
@@ -43,9 +37,6 @@ CREATE TABLE `parking_lot_platform_db`.`group_info` (
   `group_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
-
-
 CREATE TABLE `parking_lot_platform_db`.`history_info` (
   `vehicle_info_uuid` char(17) COLLATE utf8_unicode_ci DEFAULT NULL,
   `history_info_current_time` datetime NOT NULL,
@@ -53,8 +44,6 @@ CREATE TABLE `parking_lot_platform_db`.`history_info` (
   `history_info_image_filename` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `history_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
 
 CREATE TABLE `parking_lot_platform_db`.`vehicle_info` (
   `vehicle_info_owner` varchar(10) COLLATE utf8_unicode_ci NOT NULL,

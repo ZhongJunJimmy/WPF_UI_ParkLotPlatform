@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ManagementPlatform
 {
@@ -19,7 +8,6 @@ namespace ManagementPlatform
     /// </summary>
     public partial class myMessageBox : Window
     {
-        private string passwd = "24249115";
         public myMessageBox()
         {
             InitializeComponent();
@@ -38,8 +26,9 @@ namespace ManagementPlatform
 
         private void BtConfirm_Click(object sender, RoutedEventArgs e)
         {
-
-            if (tbPasswd.Password.Equals(passwd))
+            string getPasswdCommand = "select config_para_data from parking_lot_platform_db.config where config_para_name='passwd';";
+            string passwdAES = dbProcess.GetDataTable(getPasswdCommand).Rows[0]["config_para_data"].ToString();
+            if (EncryptString.aesEncryptBase64(tbPasswd.Password).Equals(passwdAES))
             {
                 Application.Current.Shutdown();
             }
@@ -48,7 +37,7 @@ namespace ManagementPlatform
                 tbEmptyPasswd.Visibility = Visibility.Visible;
                 tbErrorPasswd.Visibility = Visibility.Hidden;
             }
-            else if ((!tbPasswd.Password.Equals("")) && (!tbPasswd.Password.Equals(passwd)))
+            else if ((!tbPasswd.Password.Equals("")) && (!tbPasswd.Password.Equals(passwdAES)))
             {
                 tbErrorPasswd.Visibility = Visibility.Visible;
                 tbEmptyPasswd.Visibility = Visibility.Hidden;
