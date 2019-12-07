@@ -28,6 +28,17 @@ namespace ManagementPlatform
         public MainWindow()
         {
             InitializeComponent();
+
+            int creatdb = dbProcess.ExecuteSQL("CREATE DATABASE IF NOT EXISTS parking_lot_platform_db; ");
+            if (creatdb != 0)
+            {
+                if (dbBuild.createDatabase())
+                    MessageBox.Show("資料庫建置已完成。");
+            }
+            
+
+
+
             mainPageInfo.Visibility = Visibility.Visible;
 
             MyCars = new List<carInfo>();
@@ -191,12 +202,12 @@ namespace ManagementPlatform
 
         private void Lv_Gate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            gateInfo seletedItem=(gateInfo)e.AddedItems[0];
-            if(MessageBox.Show("是否開啟" + seletedItem.gateName, "檢查", MessageBoxButton.YesNo)==MessageBoxResult.Yes)
+            gateInfo seletedItem = (gateInfo)e.AddedItems[0];
+            if (MessageBox.Show("是否開啟" + seletedItem.gateName, "檢查", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 MessageBox.Show("柵欄門已開啟");
             }
-            
+
         }
 
         private void BtCarInfo_Click(object sender, RoutedEventArgs e)

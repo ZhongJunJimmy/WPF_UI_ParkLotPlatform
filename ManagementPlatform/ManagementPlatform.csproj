@@ -90,6 +90,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="carInfo.cs" />
+    <Compile Include="dbBuild.cs" />
     <Compile Include="dbProcess.cs" />
     <Compile Include="displayInfo.cs" />
     <Compile Include="gateInfo.cs" />
@@ -132,5 +133,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="sqlCommand\dbCreate.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rd "$(TargetDir)sqlCommand" /s /q
+mkdir "$(TargetDir)sqlCommand"
+copy "$(ProjectDir)sqlCommand\*.*"  "$(TargetDir)sqlCommand\*.*"  /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

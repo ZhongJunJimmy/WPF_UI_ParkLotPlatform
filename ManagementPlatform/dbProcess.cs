@@ -8,7 +8,7 @@ namespace ManagementPlatform
     {
         #region MySql資料庫
         //資料庫連接字串
-        static string mySqlConnectionString = "server=localhost;database=parking_lot_platform_db;uid=root;pwd=124266062;SslMode=none;";
+        static string mySqlConnectionString = "server=localhost;uid=root;pwd=1234;SslMode=none;";
         static MySqlConnection _mySqlConnection = null;
         public static MySqlConnection mySqlConnection
         {
