@@ -56,60 +56,7 @@ CREATE TABLE `parking_lot_platform_db`.`vehicle_info` (
   `vehicle_info_uuid` char(17) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-DELIMITER $$
-CREATE TRIGGER `insert_control_box_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`control_box_info` FOR EACH ROW BEGIN
-  IF New.control_box_info_uuid IS NULL THEN
-    SET New.control_box_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER `insert_display_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`display_info` FOR EACH ROW BEGIN
-  IF New.display_info_uuid IS NULL THEN
-    SET New.display_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER `insert_gate_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`gate_info` FOR EACH ROW BEGIN
-  IF New.gate_info_uuid IS NULL THEN
-    SET New.gate_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER `insert_group_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`group_info` FOR EACH ROW BEGIN
-  IF New.group_info_uuid IS NULL THEN
-    SET New.group_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER `insert_history_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`history_info` FOR EACH ROW BEGIN
-  IF New.history_info_uuid IS NULL THEN
-    SET New.history_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
-
-
-DELIMITER $$
-CREATE TRIGGER `insert_vehicle_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`vehicle_info` FOR EACH ROW BEGIN
-  IF New.vehicle_info_uuid IS NULL THEN
-    SET New.vehicle_info_uuid := uuid_short();
-  END IF;
-END
-$$
-DELIMITER ;
+USE `parking_lot_platform_db`;
 
 ALTER TABLE `parking_lot_platform_db`.`config`
   ADD PRIMARY KEY (`config_sno`);
@@ -146,3 +93,61 @@ ALTER TABLE `parking_lot_platform_db`.`history_info`
 
 ALTER TABLE `parking_lot_platform_db`.`vehicle_info`
   ADD CONSTRAINT `vehicle_info_ibfk_1` FOREIGN KEY (`group_info_uuid`) REFERENCES `parking_lot_platform_db`.`group_info` (`group_info_uuid`) ON DELETE SET NULL;
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_control_box_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`control_box_info` FOR EACH ROW BEGIN
+  IF New.control_box_info_uuid IS NULL THEN
+    SET New.control_box_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_display_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`display_info` FOR EACH ROW BEGIN
+  IF New.display_info_uuid IS NULL THEN
+    SET New.display_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_gate_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`gate_info` FOR EACH ROW BEGIN
+  IF New.gate_info_uuid IS NULL THEN
+    SET New.gate_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_group_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`group_info` FOR EACH ROW BEGIN
+  IF New.group_info_uuid IS NULL THEN
+    SET New.group_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_history_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`history_info` FOR EACH ROW BEGIN
+  IF New.history_info_uuid IS NULL THEN
+    SET New.history_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER `parking_lot_platform_db`.`insert_vehicle_info_uuid` BEFORE INSERT ON `parking_lot_platform_db`.`vehicle_info` FOR EACH ROW BEGIN
+  IF New.vehicle_info_uuid IS NULL THEN
+    SET New.vehicle_info_uuid := uuid_short();
+  END IF;
+END
+$$
+DELIMITER ;
+
+
+

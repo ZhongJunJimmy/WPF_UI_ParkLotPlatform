@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="1" Background="#FFCFCFCF">
-            <Grid x:Name="mainPageInfo" Visibility="Hidden" RenderTransformOrigin="0.494,0.485">
+            <Grid x:Name="mainPageInfo" Visibility="Visible" RenderTransformOrigin="0.494,0.485">
                 <Grid Height="570">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="170"/>
@@ -75,7 +75,7 @@
                                 <Grid.Effect>
                                     <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1"/>
                                 </Grid.Effect>
-                                <materialDesign:PackIcon Kind="Tablet" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
+                                <materialDesign:PackIcon Kind="DoorOpen"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
                             </Grid>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30">
                                 <TextBlock FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="30"/>

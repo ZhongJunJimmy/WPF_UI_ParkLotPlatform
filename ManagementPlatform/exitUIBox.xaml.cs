@@ -26,8 +26,14 @@ namespace ManagementPlatform
 
         private void BtConfirm_Click(object sender, RoutedEventArgs e)
         {
+            string passwdAES=null;
             string getPasswdCommand = "select config_para_data from parking_lot_platform_db.config where config_para_name='passwd';";
-            string passwdAES = dbProcess.GetDataTable(getPasswdCommand).Rows[0]["config_para_data"].ToString();
+            if (dbProcess.GetDataTable(getPasswdCommand).Rows.Count != 0)
+            {
+                passwdAES = dbProcess.GetDataTable(getPasswdCommand).Rows[0]["config_para_data"].ToString();
+            }
+
+
             if (EncryptString.aesEncryptBase64(tbPasswd.Password).Equals(passwdAES))
             {
                 Application.Current.Shutdown();

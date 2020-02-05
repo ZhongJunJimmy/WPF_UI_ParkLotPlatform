@@ -20,14 +20,15 @@ namespace ManagementPlatform
         {
             InitializeComponent();
 
-            int creatdb = dbProcess.ExecuteSQL("CREATE DATABASE IF NOT EXISTS parking_lot_platform_db; ");
+            int creatdb = dbProcess.ExecuteSQL("CREATE DATABASE IF NOT EXISTS `parking_lot_platform_db`; ");
             if (creatdb != 0)
             {
                 if (dbBuild.createDatabase())
                 {
-                    MessageBox.Show("資料庫建置已完成。");
+
                     //set default passwd
                     dbProcess.ExecuteSQL("insert into parking_lot_platform_db.config(config_para_name,config_para_data)value('passwd','uo+imUr0Gw7NFF62OagnvQ==')");
+                    MessageBox.Show("資料庫建置已完成。");
                 }
             }
 
@@ -59,13 +60,10 @@ namespace ManagementPlatform
             car3.other = "董事長夫人";
             car3.direction = "離開";
             car3.UID = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-            for (int i = 0; i < 10; i++)
-            {
-                MyCars.Add(car1);
-                MyCars.Add(car2);
-                MyCars.Add(car3);
-            }
 
+            MyCars.Add(car1);
+            MyCars.Add(car2);
+            MyCars.Add(car3);
 
 
             gateList = new List<gateInfo>();
@@ -216,6 +214,6 @@ namespace ManagementPlatform
 
 
 
-        
+
     }
 }
